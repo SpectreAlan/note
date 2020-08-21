@@ -1,0 +1,51 @@
+{
+     "title": "AlanGrady’s personal note",
+     "description": "这事一个description",
+     "author": "AlanGrady",
+     "links": {
+          "sidebar": {
+               "Home": "http://htmler.cn"
+          }
+     },
+     "plugins": [
+          "-lunr",
+          "-search",
+          "search-pro",
+          "-highlight",
+          "-sharing",
+          "-font-settings",
+          "-livereload",
+          "book-summary-scroll-position-saver",
+          "chapter-fold",
+          "multipart",
+          "popup",
+          "github",
+          "favicon",
+          "copy-code-button",
+          "expandable-chapters-small",
+          "prism",
+          "splitter",
+          "anchors",
+          "navigator"
+     ],
+     "pluginsConfig": {
+          "github": {
+               "url": "https://github.com/SpectreAlan"
+          },
+          "favicon": {
+               "shortcut": "/assets/images/favicon.ico",
+               "bookmark": "/assets/images/favicon.ico",
+               "appleTouch": "/assets/images/logo.png",
+               "appleTouchMore": {
+                    "120x120": "/assets/images/logo.png",
+                    "180x180": "/assets/images/logo.png"
+               }
+          },
+          "expandable-chapters-small": {},
+          "prism": {
+               "css": [
+                    "prismjs/themes/prism-okaidia.css"
+               ]
+          }
+     }
+}

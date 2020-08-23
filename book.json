@@ -4,7 +4,7 @@
      "author": "AlanGrady",
      "links": {
           "sidebar": {
-               "Home": "http://htmler.cn"
+               "个人博客": "http://htmler.cn"
           }
      },
      "plugins": [
@@ -26,6 +26,7 @@
           "prism",
           "splitter",
           "anchors",
+          "tbfed-pagefooter",
           "navigator"
      ],
      "pluginsConfig": {
@@ -46,6 +47,11 @@
                "css": [
                     "prismjs/themes/prism-okaidia.css"
                ]
-          }
+          },
+          "tbfed-pagefooter": {
+               "copyright":"Copyright &copy htmler.cn 2017",
+               "modify_label": "2017-10-06 ~ ",
+               "modify_format": "YYYY-MM-DD HH:mm:ss"
+           }
      }
 }

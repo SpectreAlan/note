@@ -20,4 +20,30 @@ jobs:
           mv _book note;
           mkdir dist;
           tar -cvf ./dist/note.tar note;
-          ls;
+      - name: Scp
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: dist
+          remote: /data/www
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          port: ${{ secrets.HOST_PORT }}
+          concurrency: 20
+  deploy:
+    needs: [build]
+    name: Deploy console
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          port: ${{ secrets.HOST_PORT }}
+          script: |
+            cd /data/www
+            rm -rf note
+            tar -xvf note.tar
+            rm -f note.tar  

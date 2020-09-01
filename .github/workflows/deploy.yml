@@ -8,8 +8,16 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build project
-        run:
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.1.0
+      - name: npm install, build
+        run: |
           sudo npm install gitbook-cli -g;
-          gitbook install;
-          gitbook build;
+          /usr/local/bin/gitbook install;
+          /usr/local/bin/gitbook build;
+          mv _book note;
+          mkdir dist;
+          tar -cvf ./dist/note.tar note;
+          ls;

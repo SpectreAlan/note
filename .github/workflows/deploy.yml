@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build project
         run:
-          node -v;
+          sudo yarn add gitbook-cli -g;

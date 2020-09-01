@@ -5,13 +5,11 @@ on:
     branches: [ master ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build project
         run:
           sudo npm install gitbook-cli -g;
-          echo '------------install gitbook-cli 0k-----------------------';
-          which gitbook;
-          echo '-----------------------------------';
-          /usr/local/bin/gitbook install;
+          gitbook install;
+          gitbook build;

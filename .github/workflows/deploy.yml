@@ -11,4 +11,7 @@ jobs:
       - name: Build project
         run:
           sudo npm install gitbook-cli -g;
+          echo '------------install gitbook-cli 0k-----------------------';
+          which gitbook;
+          echo '-----------------------------------';
           /usr/local/bin/gitbook install;

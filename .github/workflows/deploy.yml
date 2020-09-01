@@ -5,10 +5,10 @@ on:
     branches: [ master ]
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 10.x
+      - name: Use Node.js 12.1.0
         uses: actions/setup-node@v1
         with:
           node-version: 12.1.0

@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build project
         run:
-          sudo yarn global install gitbook-cli;
-          gitbook install;
-          gitbook build;
+          sudo yarn global add gitbook-cli --prefix /usr/local;
+          /usr/local/bin/gitbook install;
+          /usr/local/bin/gitbook build;
           mv _book note;
           mkdir dist;
           tar -cvf ./dist/note.tar note;

@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build project
         run:
-          sudo npm install gitbook -g;
+          sudo npm install gitbook-cli -g;
           gitbook install;
           gitbook build;
           mv _book note;

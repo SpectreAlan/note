@@ -1,8 +1,6 @@
-## 安装nginx
+## 常规安装
 
-### 常规安装
-
-```sh
+```
 # 安装wget
 yum install -y weget
 # 安装编译工具和相关的库文件 
@@ -32,22 +30,22 @@ find / -name nginx
 ln -s /usr/local/share/applications/nginx-1.14.0/sbin/nginx /usr/sbin/nginx
 ```
 
-### yum安装
+## yum安装
 
-- 添加yum源
+### 添加yum源
 
 root权限下添加nginx的yum源，此处以RHEL/CentOS为例，其他版本的linux参考[这里](http://nginx.org/en/linux_packages.html)
 
-```sh
+```
 # 安装yum-utils
-yum install yum-utils
+yum install yum-utils -y
 # 添加nginx.repo
 vi /etc/yum.repos.d/nginx.repo
 ```
 
 内容如下：
 
-```sh
+```
 [nginx-stable]
 name=nginx stable repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
@@ -65,15 +63,15 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 module_hotfixes=true
 ```
 
-- 安装nginx
+### 安装nginx
 
-```sh
+```bash
 yum -y install nginx
 ```
 
 ## 启动nginx
 
-```sh
+```
 nginx
 # 如果没任何提示，则代表nginx启动成功了，查看nginx端口占用
 lsof -i:80
@@ -87,7 +85,7 @@ firewall-cmd --reload
 
 ## 修改nginx配置
 
-```sh
+```
 # 查找配置文件路径
 find / -name nginx.conf
 # 得到路径如：/etc/nginx/nginx.conf，接下来编辑
@@ -96,7 +94,7 @@ vi /etc/nginx/nginx.conf
 
 找到server部分
 
-```nginx
+```
 server {
     listen       80; #监听的端口
     server_name  aaa.com; # 需要绑定的域名   
@@ -134,13 +132,13 @@ server {
 
 配置完毕以后esc然后:wq回车，reload一下conf
 
-```sh
+```bash
 nginx -s reload 
 ```
 
 ## nginx常规操作
 
-```sh
+```
 # 启动nginx
 nginx
 
@@ -162,9 +160,7 @@ tail -100f /var/log/nginx/error.log
 # 查看nginx请求日志(最近100条)
 tail -100f /var/log/nginx/access.log
 ```
-
 ## 错误处理
-
 ### 报错403
 
 - 查看nginx的启动用户

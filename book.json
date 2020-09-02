@@ -4,7 +4,7 @@
      "author": "AlanGrady",
      "links": {
           "sidebar": {
-               "个人博客": "http://htmler.cn"
+               "个人主页": "https://997.dog"
           }
      },
      "plugins": [
@@ -49,7 +49,7 @@
                ]
           },
           "tbfed-pagefooter": {
-               "copyright":"Copyright &copy htmler.cn 2017",
+               "copyright":"Copyright &copy https://997.dog 2017",
                "modify_label": "2017-10-06 ~ ",
                "modify_format": "YYYY-MM-DD HH:mm:ss"
            }

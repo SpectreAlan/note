@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.1.0
-      - name: npm install, build
+      - name: build
         run: |
           sudo npm install gitbook-cli -g;
           /usr/local/bin/gitbook install;

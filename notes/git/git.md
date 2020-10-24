@@ -125,3 +125,20 @@ git merge --no-ff -m "merged feature vulcan" feature-vulcan
 # 情况2：丢弃并删除vulcan的情况
 git branch -D feature-vulcan
 ```
+## 其他
+
+### 更新fork仓库
+```bash
+# 将其他人的仓库fork到自己的repository下
+# 将fork后的仓库clone到本地
+# 添加源仓库地址
+git remote add upstream xxxx
+# 切换分支
+git checkout master
+# 将原仓库的更新拉到本地
+git fetch upstream
+# 合并
+git merge upstream/master
+# 推送
+git push origin master
+```

@@ -134,11 +134,11 @@ git branch -D feature-vulcan
 # 添加源仓库地址
 git remote add upstream xxxx
 # 切换分支
-git checkout master
+git checkout main
 # 将原仓库的更新拉到本地
 git fetch upstream
 # 合并
-git merge upstream/master
+git merge upstream/main
 # 推送
-git push origin master
+git push origin main
 ```

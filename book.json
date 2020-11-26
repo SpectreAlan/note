@@ -4,7 +4,7 @@
      "author": "AlanGrady",
      "links": {
           "sidebar": {
-               "个人主页": "https://997.dog"
+               "个人主页": "https://www.jrsee.com"
           }
      },
      "plugins": [
@@ -49,7 +49,7 @@
                ]
           },
           "tbfed-pagefooter": {
-               "copyright":"Copyright &copy https://997.dog 2017",
+               "copyright":"Copyright &copy https://www.jrsee.com 2017",
                "modify_label": "2017-10-06 ~ ",
                "modify_format": "YYYY-MM-DD HH:mm:ss"
            }

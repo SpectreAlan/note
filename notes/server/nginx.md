@@ -104,7 +104,7 @@ server {
     }
     # 反向代理
     location /api/ { # 将所有带api的请求代理到127.0.0.1:3000
-        proxy_pass   http://127.0.0.1:3000;    # host:port的格式
+        proxy_pass   http://127.0.0.1:3000/;    # host:port的格式
         proxy_set_header X-Real-IP $remote_addr; # 代理以后获取真实访问源ip
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # 在多层代理时会包含真实客户端及中间每个代理服务器的IP
         proxy_set_header Host $http_host; # 客户端真实的域名和端口号
@@ -125,14 +125,17 @@ server {
         proxy_set_header Host   $host:$proxy_port;
         proxy_set_header X-Real-IP  $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass   http://127.0.0.1:4000;    # host:port的格式
+        proxy_pass   http://127.0.0.1:4000/;    # host:port的格式
     }
 }
 ```
 
-配置完毕以后esc然后:wq回车，reload一下conf
+配置完毕以后esc然后:wq回车，检测是否又错，没错就reload一下conf
 
 ```bash
+# 检测配置文件
+nginx -t 
+# 重载
 nginx -s reload 
 ```
 
@@ -141,6 +144,9 @@ nginx -s reload
 ```
 # 启动nginx
 nginx
+
+# 检测配置文件
+nginx -t 
 
 # 重新载入配置文件
 nginx -s reload 
@@ -160,6 +166,55 @@ tail -100f /var/log/nginx/error.log
 # 查看nginx请求日志(最近100条)
 tail -100f /var/log/nginx/access.log
 ```
+
+## 添加IP访问限制
+
+### 规则
+```bash
+# 屏蔽单个ip访问,格式： deny ip;
+deny 1.2.3.4;
+# 允许单个ip访问,格式： allow ip;
+allow 1.2.3.4;
+# 屏蔽所有ip访问
+deny all;
+# 允许所有ip访问
+allow all;
+# 屏蔽ip段访问,格式: deny ip/mask
+# 屏蔽192.168.1.0到192.168.1.255访问的命令 
+deny 192.168.1.0/255;
+# 允许ip段访问,格式：allow ip/mask
+# 允许192.168.1.0到192.168.1.255访问的命令
+allow 192.168.1.0/255;
+```
+
+### 配置说明
+ 
+-  可新建一个配置文件blockip.conf,在其中编写相关的ip限制语句，然后在nginx.conf中加入如下配置：
+
+```bash
+include blockip.conf;
+```
+
+- nginx会根据配置文件中的语句，从上至下依次判断。因此，写在前面的语句可能会屏蔽后续的语句
+
+```bash
+# 允许部分ip访问
+allow 123.45.25.6;
+allow 123.68.52.125;
+allow 123.125.25.106;
+# 禁止其余ip访问
+deny all; 
+```
+
+- 屏蔽策略文件放置规则
+
+|放置位置 | 效果 
+|  ----  | ----  
+|http | nginx中所有服务起效 |胜多负少
+|server | 指定的服务起效
+|location | 满足的location下起效 
+|limit_except | 指定的http方法谓词起效
+
 ## 错误处理
 ### 报错403
 

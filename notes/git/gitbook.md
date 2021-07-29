@@ -46,11 +46,11 @@ structure - 设置 Readme, Summary, Glossary等对应的文件
 ```json
 {
      "title": "AlanGrady’s personal note",
-     "description": "这事一个description",
+     "description": "这是一个description",
      "author": "AlanGrady",
      "links": {
           "sidebar": {
-               "Home": "http://htmler.cn"
+               "Home": "https://jszoo.com"
           }
      },
      "plugins": [
